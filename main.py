@@ -10,6 +10,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+import unittest
 
 def sequence_matcher_score(info_1, info_2):
     sequence_matcher_score_similarity = difflib.SequenceMatcher(None, info_1, info_2).ratio()
@@ -129,6 +130,7 @@ def generate_vector(lst, vocabulary):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+
     strings1 = ["example", "another", "string"]
     strings2 = ["other", "example", "string"]
     # strings2 = ["example", "another", "string"]
