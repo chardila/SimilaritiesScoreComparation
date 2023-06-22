@@ -8,16 +8,7 @@ import CosineSimilarity
 import HashDifference
 import SecuenceMatcher
 import Jaccard
-
-
-def dice_coefficient(str1, str2, sizestr1, sizestr2):
-    # Calculate the intersection between the sets
-    intersection = len(set(str1).intersection(set(str2)))
-
-    # Calculate the Dice coefficient
-    dice_coeff = (2 * intersection) / (sizestr1 + sizestr2)
-
-    return dice_coeff
+import DiceCoefficient
 
 
 def calculate_sha256_hash(data):
@@ -113,7 +104,7 @@ if __name__ == '__main__':
     size2 = len(set(strings2))
 
     start_time = time.time()
-    dice_score = dice_coefficient(strings1, strings2, size1, size2)
+    dice_score = DiceCoefficient.dice_coefficient(strings1, strings2, size1, size2)
     end_time = time.time()
 
     print("Dice coefficient Similarity:", dice_score)
