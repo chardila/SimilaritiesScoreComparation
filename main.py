@@ -1,50 +1,19 @@
 import hashlib
 import time
 
-# imports for Euclidean similarity
-import numpy as np
-
 import CosineSimilarity
-import HashDifference
-import SecuenceMatcher
-import Jaccard
 import DiceCoefficient
+import Euclidean
 import Hamming
+import HashDifference
+import Jaccard
+import SecuenceMatcher
 
 
 def calculate_sha256_hash(data):
     combined_string = '|'.join(data)
     sha256_hash = hashlib.sha256(combined_string.encode()).hexdigest()
     return sha256_hash
-
-
-
-
-
-def euclidean_similarity(list1, list2):
-    # Create a vocabulary of unique words
-    vocabulary = list(set(list1 + list2))
-
-    # Generate one-hot encoded vectors for each list
-    vector1 = generate_vector(list1, vocabulary)
-    vector2 = generate_vector(list2, vocabulary)
-
-    # Calculate the Euclidean distance
-    euclidean_distance = np.linalg.norm(vector1 - vector2)
-
-    # Calculate the similarity score
-    max_distance = np.sqrt(len(vocabulary))
-    euclidean_similarity_result = 1 - (euclidean_distance / max_distance)
-
-    return euclidean_similarity_result
-
-
-def generate_vector(lst, vocabulary):
-    vector = np.zeros(len(vocabulary))
-    for word in lst:
-        if word in vocabulary:
-            vector[vocabulary.index(word)] = 1
-    return vector
 
 
 # Press the green button in the gutter to run the script.
@@ -104,6 +73,6 @@ if __name__ == '__main__':
     print("Time: ", end_time - start_time)
 
     start_time = time.time()
-    similarity = euclidean_similarity(strings1, strings2)
+    similarity = Euclidean.euclidean_similarity(strings1, strings2)
     end_time = time.time()
     print("Euclidean similarity:", similarity)
