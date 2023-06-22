@@ -1,4 +1,3 @@
-import hashlib
 import time
 
 import CosineSimilarity
@@ -10,13 +9,6 @@ import Jaccard
 import SecuenceMatcher
 
 
-def calculate_sha256_hash(data):
-    combined_string = '|'.join(data)
-    sha256_hash = hashlib.sha256(combined_string.encode()).hexdigest()
-    return sha256_hash
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     strings1 = ["example", "another", "string"]
     strings2 = ["other", "example", "string"]
@@ -50,7 +42,7 @@ if __name__ == '__main__':
     jaccard_similarity_score = Jaccard.jaccard_similarity(strings1, strings2)
     end_time = time.time()
 
-    print('Jaccard.py similarity:', jaccard_similarity_score)
+    print('Jaccard similarity:', jaccard_similarity_score)
     print("Time: ", end_time - start_time)
 
     size1 = len(set(strings1))
@@ -63,13 +55,13 @@ if __name__ == '__main__':
     print("Dice coefficient Similarity:", dice_score)
     print("Time: ", end_time - start_time)
 
-    hash1 = calculate_sha256_hash(strings1)
-    hash2 = calculate_sha256_hash(strings2)
+    hash1 = Hamming.calculate_sha256_hash(strings1)
+    hash2 = Hamming.calculate_sha256_hash(strings2)
 
     start_time = time.time()
     distance = Hamming.hamming_similarity(hash1, hash2)
     end_time = time.time()
-    print("Hamming.py distance Similarity:", distance)
+    print("Hamming distance Similarity:", distance)
     print("Time: ", end_time - start_time)
 
     start_time = time.time()
