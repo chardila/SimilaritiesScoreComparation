@@ -1,5 +1,5 @@
-# imports for sequence_matcher_score method
-import difflib
+import SecuenceMatcher
+
 # imports for calculate_hash_difference_similarity method
 import hashlib
 import time
@@ -9,11 +9,6 @@ import numpy as np
 # imports for cosine_similarity_vectors method
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-
-def sequence_matcher_score(info_1, info_2):
-    sequence_matcher_score_similarity = difflib.SequenceMatcher(None, info_1, info_2).ratio()
-    return sequence_matcher_score_similarity
 
 
 def cosine_similarity_vectors(vectors1, vectors2):
@@ -129,13 +124,12 @@ def generate_vector(lst, vocabulary):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-
     strings1 = ["example", "another", "string"]
     strings2 = ["other", "example", "string"]
     # strings2 = ["example", "another", "string"]
 
     start_time = time.time()
-    similarity = sequence_matcher_score(strings1, strings2)
+    similarity = SecuenceMatcher.sequence_matcher_score(strings1, strings2)
     end_time = time.time()
 
     print('Sequence Matcher Similarity:', similarity)
