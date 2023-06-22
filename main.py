@@ -7,19 +7,7 @@ import numpy as np
 import CosineSimilarity
 import HashDifference
 import SecuenceMatcher
-
-
-# imports for cosine_similarity_vectors method
-
-
-def jaccard_similarity(list1, list2):
-    set1 = set(list1)
-    set2 = set(list2)
-
-    intersection = set1.intersection(set2)
-    union = set1.union(set2)
-
-    return len(intersection) / len(union)
+import Jaccard
 
 
 def dice_coefficient(str1, str2, sizestr1, sizestr2):
@@ -115,10 +103,10 @@ if __name__ == '__main__':
     print("Time: ", end_time - start_time)
 
     start_time = time.time()
-    jaccard_similarity_score = jaccard_similarity(strings1, strings2)
+    jaccard_similarity_score = Jaccard.jaccard_similarity(strings1, strings2)
     end_time = time.time()
 
-    print('Jaccard similarity:', jaccard_similarity_score)
+    print('Jaccard.py similarity:', jaccard_similarity_score)
     print("Time: ", end_time - start_time)
 
     size1 = len(set(strings1))
