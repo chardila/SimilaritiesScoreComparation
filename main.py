@@ -1,38 +1,15 @@
-import SecuenceMatcher
-import CosineSimilarity
-
-# imports for calculate_hash_difference_similarity method
 import hashlib
 import time
 
 # imports for Euclidean similarity
 import numpy as np
+
+import CosineSimilarity
+import HashDifference
+import SecuenceMatcher
+
+
 # imports for cosine_similarity_vectors method
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-
-
-
-
-
-def calculate_identifier(features):
-    combined_string = '|'.join(features)
-    md5_hash = hashlib.md5(combined_string.encode()).hexdigest()
-    return md5_hash
-
-
-def calculate_hash_difference_similarity(pid1, pid2):
-    # Convert the hexadecimal representations to binary strings
-    binary_id1 = bin(int(pid1, 16))[2:].zfill(len(id1) * 4)
-    binary_id2 = bin(int(pid2, 16))[2:].zfill(len(id2) * 4)
-
-    # Count the matching digits
-    rta_similarity = sum(bit1 == bit2 for bit1, bit2 in zip(binary_id1, binary_id2))
-
-    # Normalize the similarity score between 0 and 1
-    max_similarity = max(len(binary_id1), len(binary_id2))
-    hash_difference = rta_similarity / max_similarity
-    return hash_difference
 
 
 def jaccard_similarity(list1, list2):
@@ -127,11 +104,11 @@ if __name__ == '__main__':
     print('Cosine Similarity:', similarity_score)
     print("Time: ", end_time - start_time)
 
-    id1 = calculate_identifier(strings1)
-    id2 = calculate_identifier(strings2)
+    id1 = HashDifference.calculate_identifier(strings1)
+    id2 = HashDifference.calculate_identifier(strings2)
 
     start_time = time.time()
-    hash_difference_similarity = calculate_hash_difference_similarity(id1, id2)
+    hash_difference_similarity = HashDifference.calculate_hash_difference_similarity(id1, id2)
     end_time = time.time()
 
     print("Hash Difference Similarity:", hash_difference_similarity)
