@@ -9,6 +9,7 @@ import HashDifference
 import SecuenceMatcher
 import Jaccard
 import DiceCoefficient
+import Hamming
 
 
 def calculate_sha256_hash(data):
@@ -17,24 +18,7 @@ def calculate_sha256_hash(data):
     return sha256_hash
 
 
-def hex_to_binary(hex_hash):
-    binary_hash = bin(int(hex_hash, 16))[2:].zfill(len(hex_hash) * 4)
-    return binary_hash
 
-
-def hamming_similarity(ohash1, ohash2):
-    if len(ohash1) != len(ohash2):
-        raise ValueError("Hashes must have the same length")
-
-    binary_hash1 = hex_to_binary(ohash1)
-    binary_hash2 = hex_to_binary(ohash2)
-
-    total_bits = len(binary_hash1)
-    differing_bits = sum(bit1 != bit2 for bit1, bit2 in zip(binary_hash1, binary_hash2))
-
-    hamming_similarity_result = 1 - (differing_bits / total_bits)
-
-    return hamming_similarity_result
 
 
 def euclidean_similarity(list1, list2):
@@ -114,9 +98,9 @@ if __name__ == '__main__':
     hash2 = calculate_sha256_hash(strings2)
 
     start_time = time.time()
-    distance = hamming_similarity(hash1, hash2)
+    distance = Hamming.hamming_similarity(hash1, hash2)
     end_time = time.time()
-    print("Hamming distance Similarity:", distance)
+    print("Hamming.py distance Similarity:", distance)
     print("Time: ", end_time - start_time)
 
     start_time = time.time()
