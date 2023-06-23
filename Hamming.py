@@ -1,4 +1,5 @@
 import hashlib
+import MeasureExecTimes
 
 
 def hex_to_binary(hex_hash):
@@ -15,7 +16,7 @@ def calculate_sha256_hash(data):
     sha256_hash = hashlib.sha256(combined_string.encode()).hexdigest()
     return sha256_hash
 
-
+@MeasureExecTimes.measure_execution_time
 def get_hamming_similarity_score(s1, s2):
     # Calculate SHA-256 hashes for the input strings
     hash1 = calculate_sha256_hash(s1)

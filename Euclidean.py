@@ -1,5 +1,5 @@
 import numpy as np
-
+import MeasureExecTimes
 
 def generate_vector(lst, vocabulary):
     vector = np.zeros(len(vocabulary))
@@ -8,7 +8,7 @@ def generate_vector(lst, vocabulary):
             vector[vocabulary.index(word)] = 1
     return vector
 
-
+@MeasureExecTimes.measure_execution_time
 def get_euclidean_similarity_score(list1, list2):
     # Create a vocabulary of unique words
     vocabulary = list(set(list1 + list2))

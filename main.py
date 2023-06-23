@@ -41,42 +41,42 @@ if __name__ == '__main__':
     # Measure and compare the performance of different similarity algorithms
 
     # Perform sequence matching similarity calculation
-    best_similarity_score, best_time = perform(SecuenceMatcher.sequence_matcher_score, strings1, strings2)
+    best_similarity_score, best_time = SecuenceMatcher.get_sequence_matcher_score(strings1, strings2)
     best_algorithm = "Sequence Matcher Similarity"
 
     # Perform cosine similarity calculation
-    similarity_score, exec_time = perform(CosineSimilarity.get_cosine_similarity_score, strings1, strings2)
+    similarity_score, exec_time = CosineSimilarity.get_cosine_similarity_score(strings1, strings2)
     if best_time > exec_time:
         best_similarity_score = similarity_score
         best_time = exec_time
         best_algorithm = "Cosine Similarity"
 
     # Perform hash difference similarity calculation
-    similarity_score, exec_time = perform(HashDifference.get_hash_difference_similarity_score, strings1, strings2)
+    similarity_score, exec_time = HashDifference.get_hash_difference_similarity_score(strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hash Difference Similarity"
 
     # Perform Jaccard similarity calculation
-    similarity_score, exec_time = perform(Jaccard.get_jaccard_similarity_score, strings1, strings2)
+    similarity_score, exec_time = Jaccard.get_jaccard_similarity_score(strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Jaccard Similarity"
 
     # Perform Dice coefficient similarity calculation
-    similarity_score, exec_time = perform(DiceCoefficient.get_dice_coefficient_score, strings1, strings2)
+    similarity_score, exec_time = DiceCoefficient.get_dice_coefficient_score(strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Dice coefficient Similarity"
 
     # Perform Hamming similarity calculation
-    similarity_score, exec_time = perform(Hamming.get_hamming_similarity_score, strings1, strings2)
+    similarity_score, exec_time = Hamming.get_hamming_similarity_score(strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hamming distance Similarity"
 
     # Perform Euclidean similarity calculation
-    similarity_score, exec_time = perform(Euclidean.get_euclidean_similarity_score, strings1, strings2)
+    similarity_score, exec_time = Euclidean.get_euclidean_similarity_score(strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Euclidean Similarity"

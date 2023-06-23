@@ -1,3 +1,5 @@
+import MeasureExecTimes
+@MeasureExecTimes.measure_execution_time
 def get_dice_coefficient_score(str1, str2):
 
     sizestr1, sizestr2 = len(set(str1)), len(set(str2))
