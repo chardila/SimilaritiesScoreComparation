@@ -8,28 +8,6 @@ import HashDifference
 import Jaccard
 import SecuenceMatcher
 
-
-def perform(fun, *args):
-    # Measure the start time of the function execution
-    start_time = time.time()
-
-    # Call the provided function (fun) with the given arguments (args)
-    similarity = fun(*args)
-
-    # Measure the end time of the function execution
-    end_time = time.time()
-
-    # Calculate the time difference
-    dif_time = end_time - start_time
-
-    # Print the function name, similarity result, and execution time
-    print(fun.__name__, ":", similarity)
-    print("time:", dif_time)
-
-    # Return the similarity result and execution time as a tuple
-    return similarity, dif_time
-
-
 if __name__ == '__main__':
     # Entry point of the program when it is run as the main script
 
