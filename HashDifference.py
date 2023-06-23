@@ -1,5 +1,6 @@
 # imports for calculate_hash_difference_similarity method
 import hashlib
+import HashDifference
 
 
 def calculate_identifier(features):
@@ -8,7 +9,11 @@ def calculate_identifier(features):
     return md5_hash
 
 
-def calculate_hash_difference_similarity(pid1, pid2):
+def calculate_hash_difference_similarity(string1, string2):
+
+    pid1 = HashDifference.calculate_identifier(string1)
+    pid2 = HashDifference.calculate_identifier(string1)
+
     # Convert the hexadecimal representations to binary strings
     binary_id1 = bin(int(pid1, 16))[2:].zfill(len(pid1) * 4)
     binary_id2 = bin(int(pid2, 16))[2:].zfill(len(pid2) * 4)
