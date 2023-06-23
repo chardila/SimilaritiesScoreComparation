@@ -1,6 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+
 def cosine_similarity_vectors(vectors1, vectors2):
     # Combine the strings from both vectors into a single list
     combined_strings = [' '.join(vectors1), ' '.join(vectors2)]
