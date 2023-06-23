@@ -1,5 +1,3 @@
-import time
-
 import CosineSimilarity
 import DiceCoefficient
 import Euclidean

@@ -1,6 +1,6 @@
 import MeasureExecTimes
 
-@MeasureExecTimes.measure_execution_time
+@MeasureExecTimes.add_logging
 def get_jaccard_similarity_score(list1, list2):
     # Convert the input lists into sets
     set1 = set(list1)

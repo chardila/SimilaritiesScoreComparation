@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 import MeasureExecTimes
 
-@MeasureExecTimes.measure_execution_time
+@MeasureExecTimes.add_logging
 def get_cosine_similarity_score(vectors1, vectors2):
     # Combine the strings from both vectors into a single list
     combined_strings = [' '.join(vectors1), ' '.join(vectors2)]

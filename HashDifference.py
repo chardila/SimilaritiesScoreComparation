@@ -11,7 +11,7 @@ def calculate_md5hash(features):
     md5_hash = hashlib.md5(combined_string.encode()).hexdigest()
     return md5_hash
 
-@MeasureExecTimes.measure_execution_time
+@MeasureExecTimes.add_logging
 def get_hash_difference_similarity_score(string1, string2):
     pid1 = calculate_md5hash(string1)
     pid2 = calculate_md5hash(string2)
