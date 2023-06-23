@@ -9,7 +9,7 @@ def generate_vector(lst, vocabulary):
     return vector
 
 
-def euclidean_similarity(list1, list2):
+def get_euclidean_similarity_score(list1, list2):
     # Create a vocabulary of unique words
     vocabulary = list(set(list1 + list2))
 

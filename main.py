@@ -10,58 +10,77 @@ import SecuenceMatcher
 
 
 def perform(fun, *args):
-
+    # Measure the start time of the function execution
     start_time = time.time()
+
+    # Call the provided function (fun) with the given arguments (args)
     similarity = fun(*args)
+
+    # Measure the end time of the function execution
     end_time = time.time()
 
+    # Calculate the time difference
     dif_time = end_time - start_time
 
+    # Print the function name, similarity result, and execution time
     print(fun.__name__, ":", similarity)
     print("time:", dif_time)
 
+    # Return the similarity result and execution time as a tuple
     return similarity, dif_time
 
 
 if __name__ == '__main__':
+    # Entry point of the program when it is run as the main script
 
+    # Define two lists of strings
     strings1 = ["example", "another", "string"]
-    # strings2 = ["other", "example", "string"]
-    strings2 = ["example", "another", "string"]
+    strings2 = ["other", "example", "string"]
+    # strings2 = ["example", "another", "string"]
 
+    # Measure and compare the performance of different similarity algorithms
+
+    # Perform sequence matching similarity calculation
     best_similarity_score, best_time = perform(SecuenceMatcher.sequence_matcher_score, strings1, strings2)
     best_algorithm = "Sequence Matcher Similarity"
 
-    similarity_score, exec_time = perform(CosineSimilarity.cosine_similarity_vectors, strings1, strings2)
+    # Perform cosine similarity calculation
+    similarity_score, exec_time = perform(CosineSimilarity.get_cosine_similarity_score, strings1, strings2)
     if best_time > exec_time:
         best_similarity_score = similarity_score
         best_time = exec_time
         best_algorithm = "Cosine Similarity"
 
-    similarity_score, exec_time = perform(HashDifference.calculate_hash_difference_similarity, strings1, strings2)
+    # Perform hash difference similarity calculation
+    similarity_score, exec_time = perform(HashDifference.get_hash_difference_similarity_score, strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hash Difference Similarity"
 
-    similarity_score, exec_time = perform(Jaccard.jaccard_similarity, strings1, strings2)
+    # Perform Jaccard similarity calculation
+    similarity_score, exec_time = perform(Jaccard.get_jaccard_similarity_score, strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Jaccard Similarity"
 
-    similarity_score, exec_time = perform(DiceCoefficient.dice_coefficient, strings1, strings2)
+    # Perform Dice coefficient similarity calculation
+    similarity_score, exec_time = perform(DiceCoefficient.get_dice_coefficient_score, strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Dice coefficient Similarity"
 
-    similarity_score, exec_time = perform(Hamming.hamming_similarity, strings1, strings2)
+    # Perform Hamming similarity calculation
+    similarity_score, exec_time = perform(Hamming.get_hamming_similarity_score, strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hamming distance Similarity"
 
-    similarity_score, exec_time = perform(Euclidean.euclidean_similarity, strings1, strings2)
+    # Perform Euclidean similarity calculation
+    similarity_score, exec_time = perform(Euclidean.get_euclidean_similarity_score, strings1, strings2)
     if best_time > exec_time:
         best_time = exec_time
-        best_algorithm = "Hamming distance Similarity"
+        best_algorithm = "Euclidean Similarity"
 
-    print("Best Similarity Algorithm :", best_algorithm)
-    print("Best Execution Time : ", best_time)
+    # Print the best similarity algorithm and execution time
+    print("Best Similarity Algorithm:", best_algorithm)
+    print("Best Execution Time:", best_time)

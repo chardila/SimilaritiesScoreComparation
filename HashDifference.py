@@ -1,15 +1,19 @@
 # imports for calculate_hash_difference_similarity method
 import hashlib
 
-def calculate_identifier(features):
+
+def calculate_md5hash(features):
+    # Combine the elements of the features list into a single string
     combined_string = '|'.join(features)
+
+    # Calculate the MD5 hash of the combined string
     md5_hash = hashlib.md5(combined_string.encode()).hexdigest()
     return md5_hash
 
 
-def calculate_hash_difference_similarity(string1, string2):
-    pid1 = calculate_identifier(string1)
-    pid2 = calculate_identifier(string2)
+def get_hash_difference_similarity_score(string1, string2):
+    pid1 = calculate_md5hash(string1)
+    pid2 = calculate_md5hash(string2)
 
     # Convert the hexadecimal representations to binary strings
     binary_id1 = bin(int(pid1, 16))[2:].zfill(len(pid1) * 4)
