@@ -25,18 +25,16 @@ def perform(fun, *args):
 
 if __name__ == '__main__':
 
-    similarity_score, exec_time = 0.0, 0.0
-
     strings1 = ["example", "another", "string"]
     # strings2 = ["other", "example", "string"]
     strings2 = ["example", "another", "string"]
 
-    similarity_score, exec_time = perform(SecuenceMatcher.sequence_matcher_score, strings1, strings2)
-    best_time = exec_time
+    best_similarity_score, best_time = perform(SecuenceMatcher.sequence_matcher_score, strings1, strings2)
     best_algorithm = "Sequence Matcher Similarity"
 
     similarity_score, exec_time = perform(CosineSimilarity.cosine_similarity_vectors, strings1, strings2)
     if best_time > exec_time:
+        best_similarity_score = similarity_score
         best_time = exec_time
         best_algorithm = "Cosine Similarity"
 
