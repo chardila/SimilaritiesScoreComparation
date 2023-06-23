@@ -10,11 +10,12 @@ import SecuenceMatcher
 
 
 def perform(fun, *args):
+
     start_time = time.time()
     similarity = fun(*args)
     end_time = time.time()
-    dif_time = end_time - start_time
 
+    dif_time = end_time - start_time
 
     print(fun.__name__, ":", similarity)
     print("time:", dif_time)
@@ -23,6 +24,8 @@ def perform(fun, *args):
 
 
 if __name__ == '__main__':
+
+    similarity_score, exec_time = 0.0, 0.0
 
     strings1 = ["example", "another", "string"]
     # strings2 = ["other", "example", "string"]
@@ -33,32 +36,32 @@ if __name__ == '__main__':
     best_algorithm = "Sequence Matcher Similarity"
 
     similarity_score, exec_time = perform(CosineSimilarity.cosine_similarity_vectors, strings1, strings2)
-    if (best_time > exec_time):
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Cosine Similarity"
 
     similarity_score, exec_time = perform(HashDifference.calculate_hash_difference_similarity, strings1, strings2)
-    if (best_time > exec_time):
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hash Difference Similarity"
 
     similarity_score, exec_time = perform(Jaccard.jaccard_similarity, strings1, strings2)
-    if (best_time > exec_time):
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Jaccard Similarity"
 
-    similarity_score, exec_time = perform(DiceCoefficient.dice_coefficient, strings1, strings2, len(set(strings1)), len(set(strings2)))
-    if (best_time > exec_time):
+    similarity_score, exec_time = perform(DiceCoefficient.dice_coefficient, strings1, strings2)
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Dice coefficient Similarity"
 
     similarity_score, exec_time = perform(Hamming.hamming_similarity, strings1, strings2)
-    if (best_time > exec_time):
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hamming distance Similarity"
 
     similarity_score, exec_time = perform(Euclidean.euclidean_similarity, strings1, strings2)
-    if (best_time > exec_time):
+    if best_time > exec_time:
         best_time = exec_time
         best_algorithm = "Hamming distance Similarity"
 
