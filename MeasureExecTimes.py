@@ -2,6 +2,7 @@ import time
 import logging
 from functools import wraps
 
+
 def measure_execution_time(fun):
     @wraps(fun)
     def wrapper(*args, **kwargs):
@@ -10,7 +11,9 @@ def measure_execution_time(fun):
         end_time = time.perf_counter()
         execution_time = end_time - start_time
         return result, execution_time
+
     return wrapper
+
 
 def add_logging(fun):
     @wraps(fun)
@@ -29,7 +32,9 @@ def add_logging(fun):
         result, execution_time = measure_execution_time(fun)(*args, **kwargs)
 
         # Log the function result and execution time
-        logger.info(f"[{current_datetime}] Function: {fun.__name__}, Result: {result}, Execution Time: {execution_time} seconds")
+        logger.info(
+            f"[{current_datetime}] Function: {fun.__name__}, Result: {result}, Execution Time: {execution_time} seconds")
 
         return result, execution_time
+
     return wrapper

@@ -16,6 +16,7 @@ def calculate_sha256_hash(data):
     sha256_hash = hashlib.sha256(combined_string.encode()).hexdigest()
     return sha256_hash
 
+
 @MeasureExecTimes.add_logging
 def get_hamming_similarity_score(s1, s2):
     # Calculate SHA-256 hashes for the input strings
